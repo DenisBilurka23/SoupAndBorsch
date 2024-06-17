@@ -1,0 +1,36 @@
+{
+  "Delivery": {
+    "method": "CHOOSE YOUR DELIVERY OPTION"
+  },
+  "header": {
+    "home": "Home",
+    "menu": "Menu",
+    "delivery": "Delivery",
+    "contact": "Contact",
+    "login": "Login"
+  },
+  "dropdown": {
+    "profile": "Profile",
+    "": "",
+    "logout": "Logout"
+  },
+  "notFound": {
+    "text": "Page is not found"
+  },
+  "auth": {
+    "createAcc": "Create Account",
+    "authorization": "Sign In",
+    "alreadyExist": "Existing Customer? You can sign in",
+    "notExist": "Not a member",
+    "here": "here",
+    "signUp": "Sign up",
+    "email": "Email address",
+    "password": "Password",
+    "phone": "Contact Number",
+    "signIn": "Войти"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "socialMedia": "Social Media"
+  }
+}

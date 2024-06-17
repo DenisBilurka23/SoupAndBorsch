@@ -1,0 +1,36 @@
+{
+  "Delivery": {
+    "method": "CHOOSE YOUR DELIVERY OPTION"
+  },
+  "header": {
+    "home": "Главная",
+    "menu": "Меню",
+    "delivery": "Доставка",
+    "contact": "Контакты",
+    "login": "Войти"
+  },
+  "dropdown": {
+    "profile": "Профиль",
+    "orders": "Заказы",
+    "logout": "Выйти"
+  },
+  "notFound": {
+    "text": "Страница не найдена"
+  },
+  "auth": {
+    "createAcc": "Регистрация",
+    "authorization": "Авторизация",
+    "notExist": "Еще не зарегестрированны",
+    "alreadyExist": "Уже зарегестрированны? Вы можете войти",
+    "here": "здесь",
+    "signUp": "Создать аккаунт",
+    "signIn": "Войти",
+    "email": "Почта",
+    "password": "Пароль",
+    "phone": "Телефон"
+  },
+  "footer": {
+    "quickLinks": "Навигация",
+    "socialMedia": "Социальные сети"
+  }
+}
