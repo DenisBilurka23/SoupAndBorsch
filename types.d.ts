@@ -69,3 +69,10 @@ export interface User {
 	createdAt: Date
 	updatedAt: Date
 }
+
+export interface State {
+	user: User | null
+	showCart: boolean
+	showContactForm: boolean
+	cart: cartItem[]
+}

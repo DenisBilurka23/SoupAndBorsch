@@ -32,5 +32,10 @@
   "footer": {
     "quickLinks": "Quick Links",
     "socialMedia": "Social Media"
+  },
+  "contact": {
+    "description": "Healthy and Natural Food: No preservatives or artificial additives\nLike for Our Own Family: We cook with care and attention to every ingredient\nWide Variety: From soups to desserts, so everyone can find something to their taste\nConvenient Delivery: Right to your doorstep, so you can enjoy homemade meals without leaving home",
+    "whySelectUs": "Why Choose Us",
+    "where": "Toronto-Based"
   }
 }

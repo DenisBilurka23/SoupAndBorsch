@@ -10,14 +10,12 @@ const Contact = () => (
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-2xl lg:text-center">
 					<h2 className="text-base font-semibold leading-7 text-orange-600">Toronto-Based</h2>
-					<p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-						Amazing Sizzles you can&apos;t miss in TO
-					</p>
+					<p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Почему стоит выбрать нас?</p>
 					<p className="mt-6 text-lg leading-8 text-gray-600">
-						Established in 2001, this Toronto-based gem has been tantalizing taste buds with its exquisite Okonomi and
-						Bulgogi bibimbap. Renowned for its culinary artistry, the restaurant seamlessly blends traditional flavors
-						with modern flair. Embracing the digital age, it offers a seamless online ordering service, ensuring a
-						delectable experience reaches your doorstep.
+						Полезная и натуральная еда: Без консервантов и искусственных добавок Как для своей семьи: Готовим с заботой
+						и вниманием к каждому ингредиенту Широкий ассортимент: От супов до десертов, чтобы каждый нашел что-то по
+						вкусу Удобная доставка: Прямо к вашему порогу, чтобы вы могли наслаждаться домашними блюдами, не выходя из
+						дома
 					</p>
 				</div>
 				<div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">

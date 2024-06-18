@@ -26,15 +26,16 @@ const AboutUs = () => (
 				</div>
 			</div>
 			<div className="lg:basis-3/5 lg:mx-8">
-				<h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-6 sm:text-6xl">
-					Elevating Your Dining Experience Since 2001
+				<h1 className="text-2xl font-bold tracking-tight text-gray-900 mb-6 sm:text-4xl">
+					Домашняя восточно-европейская кухня с доставкой на дом в Торонто!
 				</h1>
 				<p className="mt-4 text-xl text-gray-500">
-					Welcome to TorontoSizzle. Immerse yourself in a culinary journey featuring Okonomi and Bulgogi bibimbap, a
-					perfect fusion of traditional flavors with a contemporary twist. Enjoy the convenience of online ordering,
-					bringing our exquisite dishes directly to your doorstep. Join us for a dining experience that combines warm
-					hospitality, culinary artistry, and a modern approach to traditional cuisine. TorontoSizzle invites you to
-					savor the rich tapestry of flavors – where each bite narrates a delightful story of culinary excellence.
+					Добро пожаловать в "Soup & Borsch". Мы предлагаем вкусные и полезные восточно-европейские блюда с доставкой
+					прямо к вашему порогу. Вдохновляясь традициями и рецептами наших бабушек, мы готовим все блюда с любовью и
+					заботой, используя только свежие и натуральные ингредиенты. В нашем меню вы найдете ароматные супы, борщи,
+					пирожки, вареники и многое другое – все, как для своих близких. Моя цель – подарить вам вкус домашней кухни,
+					создавая уют и тепло в каждом блюде. Присоединяйтесь к нашему кулинарному путешествию и наслаждайтесь вкусами
+					Восточной Европы у себя дома!
 				</p>
 			</div>
 		</div>

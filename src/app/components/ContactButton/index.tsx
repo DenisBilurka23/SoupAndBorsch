@@ -11,7 +11,7 @@ const ContactButton = () => {
 
 	return (
 		<button
-			className="fixed right-4 bottom-4 p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+			className="fixed right-4 bottom-4 p-4 bg-orange-600 hover:bg-orange-700 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-opacity-50"
 			onClick={handleToggleContactForm}
 		>
 			<IoChatboxEllipsesOutline />

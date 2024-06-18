@@ -1,13 +1,11 @@
 import { fetchSessionCart } from '../utils/fetchSessionData.ts'
+import { type State } from '../../../types'
 
 const sessionCart = fetchSessionCart()
 
-export const initialState = {
+export const initialState: State = {
 	user: null,
 	showCart: false,
 	showContactForm: false,
-	cart: sessionCart,
-	users: [],
-	paymentMethod: 'mobile_money',
-	checkoutData: {}
+	cart: sessionCart
 }
