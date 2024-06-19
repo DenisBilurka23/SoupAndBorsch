@@ -5,19 +5,20 @@ import { type FoodCategory } from '../../../../../types'
 import Container from '@/app/components/Container'
 import { getCategory } from '@/app/api/fetch/categories'
 
-const MenuSection: FC<{ categoryId: string; productId: string; baseUrl: string }> = async ({
-	categoryId,
-	productId,
-	baseUrl
-}) => {
+const MenuSection: FC<{
+	categoryId: string
+	productId: string
+	baseUrl: string
+	text: (property: string) => string
+}> = async ({ categoryId, productId, baseUrl, text }) => {
 	const res: FoodCategory = await getCategory(categoryId)
 
 	return (
 		<section className="w-full my-5" id="menu">
 			<div className="w-full flex items-center justify-center">
-				<Title title={res?.category?.name ?? 'Menu'} center />
+				<Title title={res?.category?.name ?? text('menu')} center />
 			</div>
-			<Filters categoryId={categoryId} baseUrl={baseUrl} />
+			<Filters text={text} categoryId={categoryId} baseUrl={baseUrl} />
 			<Container productId={productId} categoryId={res?.category.id} />
 		</section>
 	)

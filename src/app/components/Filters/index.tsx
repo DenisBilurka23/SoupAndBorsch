@@ -7,9 +7,10 @@ import { getCategories } from '@/app/api/fetch/categories'
 interface Props {
 	categoryId: string
 	baseUrl: string
+	text: (key: string) => string
 }
 
-const Filters: FC<Props> = async ({ categoryId, baseUrl }) => {
+const Filters: FC<Props> = async ({ categoryId, baseUrl, text }) => {
 	const { categories } = await getCategories()
 
 	return (
@@ -22,7 +23,7 @@ const Filters: FC<Props> = async ({ categoryId, baseUrl }) => {
 				categoryId={categoryId}
 				category={{
 					id: 0,
-					name: 'All',
+					name: text('all'),
 					img_path: LogoImg
 				}}
 				url={baseUrl}

@@ -34,8 +34,22 @@
     "socialMedia": "Social Media"
   },
   "contact": {
-    "description": "Healthy and Natural Food: No preservatives or artificial additives\nLike for Our Own Family: We cook with care and attention to every ingredient\nWide Variety: From soups to desserts, so everyone can find something to their taste\nConvenient Delivery: Right to your doorstep, so you can enjoy homemade meals without leaving home",
+    "description": {
+      "healthyAndNaturalFood": "Healthy and Natural Food: No preservatives or artificial additives",
+      "likeForOurOwnFamily": "Like for Our Own Family: We cook with care and attention to every ingredient",
+      "wideVariety": "Wide Variety: From soups to desserts, so everyone can find something to their taste",
+      "convenientDelivery": "Convenient Delivery: Right to your doorstep, so you can enjoy homemade meals without leaving home"
+    },
     "whySelectUs": "Why Choose Us",
-    "where": "Toronto-Based"
+    "where": "Toronto-Based",
+    "contacts": "Contacts"
+  },
+  "home": {
+    "discoverCulinaryDelights": "Discover Culinary Delights",
+    "title": "Homemade Eastern European Cuisine Delivered to Your Door in Toronto!",
+    "about": "Welcome to \"Soup & Borsch\". We offer delicious and healthy Eastern European dishes delivered right to your doorstep. Inspired by the traditions and recipes of our grandmothers, we prepare all our meals with love and care, using only fresh and natural ingredients. In our menu, you will find fragrant soups, borscht, pies, dumplings, and much more – all as if made for our loved ones. My goal is to bring you the taste of homemade cuisine, creating coziness and warmth in every dish. Join our culinary journey and enjoy the flavors of Eastern Europe at home!",
+    "menu": "Menu",
+    "all": "All",
+    "exploreOurDeliciousMenu": "Explore Our Delicious Menu"
   }
 }
