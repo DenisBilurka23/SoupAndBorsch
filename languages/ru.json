@@ -1,6 +1,13 @@
 {
-  "Delivery": {
-    "method": "CHOOSE YOUR DELIVERY OPTION"
+  "delivery": {
+    "title": "САМОВЫВОЗ / ОНЛАЙН ДОСТАВКА",
+    "deliveryOptions": "Варианты доставки",
+    "selfPickup": "Вы можете забрать свой заказ по адресу:",
+    "toBeDelivered": "Или получить доставку на ваш адрес. Стоимость доставки будет рассчитана в зависимости от расстояния.",
+    "deliveryCalculator": "Калькулятор доставки",
+    "calculatePrice": "Просчитать цену",
+    "distance": "Дистанция",
+    "price": "Цена"
   },
   "header": {
     "home": "Главная",
@@ -51,5 +58,32 @@
     "menu": "Меню",
     "all": "Все",
     "exploreOurDeliciousMenu": "Наше меню"
+  },
+  "cart": {
+    "shoppingCart": "Корзина",
+    "remove": "Удалить",
+    "orderTotal": "Общая сумма",
+    "proceedToShipping": "Перейти к доставке",
+    "or": "или",
+    "continueOrdering": "Продолжить покупки",
+    "shippingInformation": "Информация о доставке",
+    "shippingTo": "Доставка в:",
+    "name": "Имя",
+    "email": "Email",
+    "phone": "Телефон",
+    "changeAddress": "Изменить адрес",
+    "shipping": "Доставка",
+    "subtotal": "Итого",
+    "placeOrder": "Оформить заказ",
+    "empty": "Ваша корзина пуста",
+    "usePreviousAddress": "Использовать предыдущий адрес",
+    "saveChanges": "Сохранить изменения",
+    "fullName": "Полное имя",
+    "phoneNumber": "Номер телефона",
+    "emailAddress": "Email адрес",
+    "backToItems": "Вернуться к товарам",
+    "tooltipAddress": "Выберите адрес для доставки, чтобы продолжить",
+    "tooltipItems": "Выберите товары для заказа, чтобы продолжить",
+    "qty": "Шт"
   }
 }

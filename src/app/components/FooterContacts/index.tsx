@@ -1,4 +1,4 @@
-import Map from '@/app/components/Map'
+import Map from '@/app/components/Map/IframeMap'
 import { features } from '@/app/utils/contacts'
 import { getLocale } from 'next-intl/server'
 

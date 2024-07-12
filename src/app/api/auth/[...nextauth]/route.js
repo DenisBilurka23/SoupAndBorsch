@@ -3,6 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import {connectDB} from '../../../../../lib/mongodb'
 import UserModel from '../../../../../models/userModel'
 import {compare} from 'bcryptjs'
+import {userDto} from "../../../utils/helpers";
 
 const authOptions = {
     providers: [
@@ -29,18 +30,8 @@ const authOptions = {
         },
         session: async ({session, token}) => {
             const user = await UserModel.findById(token.sub)
-            const userDto = {
-                phoneNumber: user?.phoneNumber,
-                email: user?.email,
-                name: user?.name,
-                fullName: user?.fullName,
-                streetAddress: user?.streetAddress,
-                apt: user?.apt,
-                city: user?.city,
-                postalCode: user?.postalCode,
-                profilePhoto: user?.profilePhoto
-            }
-            session.user = {...userDto, id: token.sub}
+            const userData = userDto(user)
+            session.user = {...userData, id: token.sub}
             return session
         }
     },

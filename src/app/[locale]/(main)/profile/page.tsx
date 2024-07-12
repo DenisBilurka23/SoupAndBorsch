@@ -11,6 +11,8 @@ import { userUpdate } from '@/app/api/fetch/auth'
 import Alert from '@/app/components/Alert'
 import Loader from '@/app/components/Loader'
 import { useEdgeStore } from '@/app/providers/EdgeStoreProvider'
+import { setUser } from '@/app/context/actionCreators'
+import { userDto } from '@/app/utils/helpers'
 
 interface Inputs {
 	name: string
@@ -23,7 +25,7 @@ interface Inputs {
 }
 
 const UpdateProfile = () => {
-	const [{ user }] = useStateValue()
+	const [{ user }, dispatch] = useStateValue()
 	const {
 		register,
 		handleSubmit,
@@ -100,6 +102,7 @@ const UpdateProfile = () => {
 			})
 		)
 		setLoading(false)
+		dispatch(setUser(userDto(response)))
 		response.error ? setError(response.error) : setAlertVisible(true)
 	}
 

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FaUserCog, FaUtensils } from 'react-icons/fa'
+import { FaUserCog } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 import { useStateValue } from '../../context/StateProvider'
 import Link from 'next/link'
@@ -13,7 +13,7 @@ import { useParams } from 'next/navigation'
 
 const DropDown = ({ user, onClose, anchorRef }: { user: any; onClose: () => void }) => {
 	const [_, dispatch] = useStateValue()
-	const dropdownRef = useRef<HTMLDivElement>(null)
+	const dropdownRef = useRef<HTMLDivElement | null>(null)
 	const localeText = useTranslations('dropdown')
 	const { locale } = useParams()
 	const currentLocale = Array.isArray(locale) ? locale[0] : locale || 'en'
@@ -63,13 +63,14 @@ const DropDown = ({ user, onClose, anchorRef }: { user: any; onClose: () => void
 			>
 				{localeText('profile')} <FaUserCog />
 			</Link>
-			<Link
-				onClick={onClose}
-				href={`/${currentLocale}/orders`}
-				className="px-10 py-2 flex items-center gap-3 hover:bg-slate-100 transition-all duration-100 ease-in-out text-base text-headingColor"
-			>
-				{localeText('orders')} <FaUtensils />
-			</Link>
+			{/* TODO Add orders page */}
+			{/* <Link */}
+			{/*	onClick={onClose} */}
+			{/*	href={`/${currentLocale}/orders`} */}
+			{/*	className="px-10 py-2 flex items-center gap-3 hover:bg-slate-100 transition-all duration-100 ease-in-out text-base text-headingColor" */}
+			{/* > */}
+			{/*	{localeText('orders')} <FaUtensils /> */}
+			{/* </Link> */}
 			<p
 				className="cursor-pointer px-10 py-2 flex items-center gap-3 hover:bg-slate-100 transition-all duration-100 ease-in-out text-base text-textColor"
 				onClick={handleLogout}

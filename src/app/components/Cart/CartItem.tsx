@@ -3,7 +3,13 @@ import Link from 'next/link'
 import { type FC } from 'react'
 import { type CartProductItem } from '../../../../types'
 
-const CartItem: FC<{ product: CartProductItem; onRemove: (id: string) => () => void }> = ({ product, onRemove }) => {
+interface PropTypes {
+	product: CartProductItem
+	onRemove: (id: string) => () => void
+	localeText: (property: string) => string
+}
+
+const CartItem: FC<PropTypes> = ({ product, onRemove, localeText }) => {
 	return (
 		<li key={product.cartItemId} className="flex py-6">
 			<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -26,7 +32,9 @@ const CartItem: FC<{ product: CartProductItem; onRemove: (id: string) => () => v
 					</div>
 				</div>
 				<div className="flex flex-1 items-end justify-between text-sm">
-					<p className="text-gray-500">Qty {product.quantity}</p>
+					<p className="text-gray-500">
+						{localeText('qty')} {product.quantity}
+					</p>
 
 					<div className="flex">
 						<button
@@ -34,7 +42,7 @@ const CartItem: FC<{ product: CartProductItem; onRemove: (id: string) => () => v
 							type="button"
 							className="font-medium text-orange-600 hover:text-orange-500"
 						>
-							Remove
+							{localeText('remove')}
 						</button>
 					</div>
 				</div>

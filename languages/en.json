@@ -1,6 +1,13 @@
 {
-  "Delivery": {
-    "method": "CHOOSE YOUR DELIVERY OPTION"
+  "delivery": {
+    "title": "PICKUP / ONLINE DELIVERY",
+    "deliveryOptions": "Delivery options",
+    "selfPickup": "You can either pick up your order from the address:",
+    "toBeDelivered": "Or get it delivered to your location. The delivery price will be calculated based on the distance.",
+    "deliveryCalculator": "Delivery Calculator",
+    "calculatePrice": "Calculate price",
+    "distance": "Distance",
+    "price": "Price"
   },
   "header": {
     "home": "Home",
@@ -51,5 +58,32 @@
     "menu": "Menu",
     "all": "All",
     "exploreOurDeliciousMenu": "Explore Our Delicious Menu"
+  },
+  "cart": {
+    "shoppingCart": "Shopping cart",
+    "remove": "Remove",
+    "orderTotal": "Order Total",
+    "proceedToShipping": "Proceed to shipping",
+    "or": "or",
+    "continueOrdering": "Continue Ordering",
+    "shippingInformation": "Shipping Information",
+    "shippingTo": "Shipping to:",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "changeAddress": "Change Address",
+    "shipping": "Shipping",
+    "subtotal": "Subtotal",
+    "placeOrder": "Place order",
+    "empty": "Your cart is empty",
+    "usePreviousAddress": "Use Previous Address",
+    "saveChanges": "Save Changes",
+    "fullName": "Full Name",
+    "phoneNumber": "Phone Number",
+    "emailAddress": "Email Address",
+    "backToItems": "Back to items",
+    "tooltipAddress": "Select delivery address to proceed",
+    "tooltipItems": "Select items to order to proceed",
+    "qty": "Qty"
   }
 }

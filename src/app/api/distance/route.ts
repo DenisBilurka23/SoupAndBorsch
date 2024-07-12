@@ -9,12 +9,13 @@ const getDistance = async (origin: string, destination: string) => {
 	const data = await response.json()
 
 	if (data.status === 'OK' && data.rows[0].elements[0].status === 'OK') {
-		console.log('here')
-		const distance = data.rows[0].elements[0].distance.text
-		const duration = data.rows[0].elements[0].duration.text
-		return { distance, duration }
+		const distanceText = data.rows[0].elements[0].distance.text
+		const durationText = data.rows[0].elements[0].duration.text
+		const distanceInMeters = data.rows[0].elements[0].distance.value
+		const distanceInKm = distanceInMeters / 1000
+
+		return { distanceText, distanceInKm, durationText }
 	} else {
-		console.log('there')
 		throw new Error('Failed to fetch distance data')
 	}
 }
@@ -29,13 +30,21 @@ export const GET = async (req: NextRequest) => {
 	}
 
 	try {
-		const data = await getDistance(origin, destination)
-		console.log('checkData: ', data)
-		// const { distance, duration } = await getDistance(origin, destination)
-		// return NextResponse.json({ distance, duration }, { status: 200 })
-		return NextResponse.json(data, { status: 200 })
+		const { distanceText, distanceInKm } = await getDistance(origin, destination)
+
+		if (distanceInKm > 75) {
+			return NextResponse.json({ error: 'Distance exceeds the maximum limit of 75 km' }, { status: 400 })
+		}
+
+		let price
+		if (distanceInKm <= 10) {
+			price = distanceInKm
+		} else {
+			price = 10 + (distanceInKm - 10) * 0.5
+		}
+
+		return NextResponse.json({ distance: distanceText, price: price.toFixed(2) }, { status: 200 })
 	} catch (error: any) {
-		console.log('there checkData: ', error)
 		return NextResponse.json({ error: error.message }, { status: 500 })
 	}
 }
