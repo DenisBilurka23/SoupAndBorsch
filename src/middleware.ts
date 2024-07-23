@@ -1,6 +1,7 @@
 import { withAuth } from 'next-auth/middleware'
 import createIntlMiddleware from 'next-intl/middleware'
 import { type NextRequest } from 'next/server'
+import { connectDB } from '../lib/mongodb'
 
 const locales = ['en', 'ru']
 const privatePages = ['/profile']
@@ -25,7 +26,8 @@ const authMiddleware = withAuth(
 	}
 )
 
-export default function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
+	await connectDB()
 	const privatePathnameRegex = RegExp(`^(/(${locales.join('|')}))?(${privatePages.join('|')})/?$`, 'i')
 	const isPrivatePage = privatePathnameRegex.test(req.nextUrl.pathname)
 

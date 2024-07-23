@@ -2,13 +2,13 @@
 const createNextIntlPlugin = require('next-intl/plugin')
 const nextConfig = {
     images: {
-        domains: ['images.pexels.com', 'pngfre.com', 'files.edgestore.dev']
+        domains: ['images.pexels.com', 'pngfre.com', 'files.edgestore.dev', 'storage.googleapis.com']
     },
     typescript: {
         ignoreBuildErrors: true
     },
     env: {
-        BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
+        BASE_URL: process.env.BASE_URL,
         CHAT_ID: process.env.CHAT_ID,
         CHAT_BASE_URL: process.env.CHAT_BASE_URL,
         GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY

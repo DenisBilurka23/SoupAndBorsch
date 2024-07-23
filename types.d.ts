@@ -5,8 +5,8 @@ interface Response {
 }
 
 export interface Category {
-	id: number
-	name: string
+	name: string | { en: string; ru: string }
+	_id: string | number
 	img_path: string
 }
 
@@ -19,16 +19,26 @@ export interface FoodCategory extends Response {
 }
 
 export interface Product {
-	id: number
-	name: string
-	price: number
-	abstract: string
-	description: string
-	product_image_path: string
-	category_id: number
-	category_name: string
-	product_status: string
+	_id: string
+	type?: string
+	name: {
+		en: string
+		ru: string
+		_id: string
+	}
+	price: number | { whole: number; slice: number }
+	ingredients: {
+		en: string
+		ru: string
+		_id: string
+	}
+	description: {
+		en: string
+		ru: string
+		_id: string
+	}
 	img_path: string
+	category_id: string
 }
 
 export interface CartProductItem extends Product {

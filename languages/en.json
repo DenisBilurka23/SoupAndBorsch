@@ -84,6 +84,16 @@
     "backToItems": "Back to items",
     "tooltipAddress": "Select delivery address to proceed",
     "tooltipItems": "Select items to order to proceed",
-    "qty": "Qty"
+    "qty": "Qty",
+    "type": "Portion",
+    "whole": "Whole",
+    "slice": "Slice"
+  },
+  "product": {
+    "ingredients": "Ingredients",
+    "description": "Description",
+    "price": "Price",
+    "quantity": "Quantity",
+    "addToCart": "Add to Cart"
   }
 }

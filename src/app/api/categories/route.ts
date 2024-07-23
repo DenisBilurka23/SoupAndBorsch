@@ -1,36 +1,41 @@
 import { NextResponse } from 'next/server'
 import { type FoodCategories } from '../../../../types'
-
-export const categories = [
-	{
-		id: 1,
-		name: 'Appetizers',
-		img_path: '/img/categories/gyoza.jpg'
-	},
-	{
-		id: 2,
-		name: 'Soups & Noodles',
-		img_path: '/img/categories/kimchi_Jjigae.png'
-	},
-	{
-		id: 3,
-		name: 'Main Courses',
-		img_path: '/img/categories/bibimbap.jpg'
-	},
-	{
-		id: 4,
-		name: 'Drinks',
-		img_path: '/img/categories/sake.jpg'
-	}
-]
+import CategoryModel from '../../../../models/categoryModel'
 
 export const GET: () => Promise<NextResponse<FoodCategories>> = async () => {
-	const json = {
-		success: true,
-		msgCode: 1,
-		msg: '',
-		categories
-	}
+	try {
+		const categories = await CategoryModel.find()
 
-	return NextResponse.json(json)
+		if (!categories) {
+			return NextResponse.json(
+				{
+					success: false,
+					msgCode: 404,
+					msg: 'Categories not found',
+					categories: []
+				},
+				{ status: 404 }
+			)
+		}
+
+		const json = {
+			success: true,
+			msgCode: 1,
+			msg: '',
+			categories
+		}
+
+		return NextResponse.json(json)
+	} catch (error) {
+		console.error('Error fetching categories:', error)
+		return NextResponse.json(
+			{
+				success: false,
+				msgCode: 500,
+				msg: 'Internal Server Error',
+				categories: []
+			},
+			{ status: 500 }
+		)
+	}
 }

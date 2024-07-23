@@ -3,7 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import {connectDB} from '../../../../../lib/mongodb'
 import UserModel from '../../../../../models/userModel'
 import {compare} from 'bcryptjs'
-import {userDto} from "../../../utils/helpers";
+import {userDto} from '../../../utils/helpers'
 
 const authOptions = {
     providers: [
@@ -12,7 +12,7 @@ const authOptions = {
             credentials: {},
             authorize: async credentials => {
                 await connectDB()
-                const user = await UserModel.findOne({email: credentials.email})
+                const user = await UserModel.findOne({email: credentials.email.toLowerCase()})
                 if (!user) {
                     return null
                 }
@@ -35,7 +35,6 @@ const authOptions = {
             return session
         }
     },
-
     session: {strategy: 'jwt'},
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
