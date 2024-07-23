@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server'
 import { type FoodCategories } from '../../../../types'
 import CategoryModel from '../../../../models/categoryModel'
+import { connectDB } from '../../../../lib/mongodb'
 
 export const GET: () => Promise<NextResponse<FoodCategories>> = async () => {
 	try {
+		await connectDB()
 		const categories = await CategoryModel.find()
 
 		if (!categories) {

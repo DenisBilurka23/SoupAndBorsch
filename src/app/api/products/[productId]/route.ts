@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { type ProductResponse } from '../../../../../types'
 import ProductModel from '../../../../../models/productModel'
+import { connectDB } from '../../../../../lib/mongodb'
 
 interface Params {
 	categoryId: string
@@ -13,6 +14,7 @@ export const GET: RequestType = async (request, { params }) => {
 	const { productId } = params
 
 	try {
+		await connectDB()
 		const product = await ProductModel.findById(productId)
 
 		if (!product) {
