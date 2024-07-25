@@ -9,11 +9,12 @@ export const POST: (req) => Promise<NextResponse<User>> = async req => {
 		const body = await req.json()
 		await connectDB()
 		const hashPassword = await hash(body.password, 10)
-		const foundUser = await UserModel.findOne({ email: body.email })
+		const normalizedEmail = body.email.toLowerCase()
+		const foundUser = await UserModel.findOne({ email: normalizedEmail })
 		if (foundUser) {
 			return NextResponse.json({ error: 'User already exists' }, { status: 400 })
 		}
-		const user = new UserModel({ ...body, password: hashPassword })
+		const user = new UserModel({ ...body, email: normalizedEmail, password: hashPassword })
 		await user.save()
 
 		return NextResponse.json(user)

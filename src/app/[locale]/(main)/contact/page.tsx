@@ -36,7 +36,12 @@ const Contact = () => {
 									<dd className="mt-2 text-base leading-7 text-gray-600">
 										{feature.linkFirst ? (
 											<a href={feature.linkFirst} target="_blank">
-												{feature.descriptionFirst}
+												{feature.descriptionFirst.split(':').map((text, inx) => (
+													<span key={text} {...(inx === 1 && { className: 'text-orange-600' })}>
+														{text}
+														{inx === 0 ? ':' : ''}
+													</span>
+												))}
 											</a>
 										) : (
 											feature.descriptionFirst
@@ -46,7 +51,12 @@ const Contact = () => {
 										<dd className="mt-2 text-base leading-7 text-gray-600">
 											{feature.linkSecond ? (
 												<a href={feature.linkSecond} target="_blank">
-													{feature.descriptionSecond}
+													{feature.descriptionSecond.split(':').map((text, inx) => (
+														<span key={text} {...(inx === 1 && { className: 'text-orange-600' })}>
+															{text}
+															{inx === 0 ? ':' : ''}
+														</span>
+													))}
 												</a>
 											) : (
 												feature.descriptionSecond

@@ -10,9 +10,10 @@ import { useEffect, useState } from 'react'
 import { type cartItems } from '../../../../types'
 import { useStateValue } from '@/app/context/StateProvider'
 import ShippingInfo from './ShippingInfo'
-import { useTranslations } from 'use-intl'
+import { useLocale, useTranslations } from 'use-intl'
 
 const Cart = () => {
+	const locale = useLocale() as 'ru' | 'en'
 	const [{ showCart, cart }, dispatch] = useStateValue()
 	const [shippingPage, setShippingPage] = useState(false)
 	const [shipping, setShipping] = useState<string | number>(0)
@@ -64,6 +65,7 @@ const Cart = () => {
 									{cart?.length ? (
 										cart.map(product => (
 											<CartItem
+												locale={locale}
 												localeText={localeText}
 												key={product.id}
 												product={product}

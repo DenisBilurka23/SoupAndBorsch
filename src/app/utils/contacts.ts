@@ -32,8 +32,9 @@ export const features: (lang: string) => Feature[] = (lang = 'en') => {
 		},
 		{
 			name: eng ? 'Social Media' : 'Социальные сети',
-			descriptionFirst: 'Facebook: @torontoSizzle',
-			descriptionSecond: 'Instagram: @julia.eats.and.treats',
+			descriptionFirst: 'Facebook: Soup & Borscht',
+			descriptionSecond: 'Instagram: julia.eats.and.treats',
+			linkFirst: 'https://www.facebook.com/groups/1614188395650763/user/61554435350897/',
 			linkSecond: 'https://www.instagram.com/julia.eats.and.treats',
 			icon: ChatBubbleBottomCenterTextIcon
 		}
