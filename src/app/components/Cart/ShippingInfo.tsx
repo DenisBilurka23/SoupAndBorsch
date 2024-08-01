@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import MapComponent from '@/app/components/Map/Map'
 import { useStateValue } from '@/app/context/StateProvider'
 import { type FieldPath, type SubmitHandler, useForm } from 'react-hook-form'
 import { type User } from '../../../../types'
-import { getDistance } from '@/app/api/fetch/maps'
+import { getCoordinates, getDistance } from '@/app/api/fetch/maps'
+import Tooltip from '@/app/components/Cart/Tooltip'
 
 interface ShippingDetails {
 	name: string
@@ -19,6 +20,7 @@ interface ShippingInfoProps {
 }
 
 const ShippingInfo: React.FC<ShippingInfoProps> = ({ setShipping, localeText }) => {
+	const saveRef = useRef<HTMLDivElement | null>(null)
 	const [{ user }] = useStateValue()
 	const [isEdited, setIsEdited] = useState(false)
 	const [destination, setDestination] = useState({ lat: 43.7745396, lng: -79.3329574 })
@@ -67,15 +69,32 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ setShipping, localeText }) 
 		setIsEdited(!isEdited)
 	}
 
-	const onSubmit: SubmitHandler<ShippingDetails> = async data => {
-		const { price } = await getDistance(`${destination.lat},${destination.lng}`)
-		setAddress(newAddress ?? '')
-		setIsEdited(false)
+	const countPrice = async (lat, lng) => {
+		const { price } = await getDistance(`${lat},${lng}`)
 		setShipping(price as string)
 	}
 
+	const onSubmit: SubmitHandler<ShippingDetails> = async data => {
+		if (newAddress) {
+			await countPrice(destination.lat, destination.lng)
+			setAddress(newAddress)
+		}
+		setIsEdited(false)
+	}
+
+	useEffect(() => {
+		const getInitialDistance = async () => {
+			if (address) {
+				const coordinates = await getCoordinates(address)
+				setDestination(coordinates)
+				await countPrice(coordinates.lat, coordinates.lng)
+			}
+		}
+		getInitialDistance()
+	}, [address])
+
 	return (
-		<div className="w-full max-w-4xl mx-auto p-4">
+		<div className="w-full max-w-4xl mx-auto p-4 this-is-it">
 			<div className="bg-white p-4 rounded-lg shadow mb-4">
 				<h2 className="text-xl text-center font-semibold mb-2">{localeText('shippingInformation')}</h2>
 				{address && (
@@ -128,10 +147,15 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ setShipping, localeText }) 
 							/>
 							{errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
 							<button
+								ref={saveRef as any}
+								disabled={!newAddress}
 								type="submit"
-								className="w-full px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition"
+								className={`${
+									newAddress ? 'bg-orange-600 hover:bg-orange-700' : 'bg-gray-400 cursor-not-allowed'
+								} w-full px-4 py-2 text-white rounded transition relative`}
 							>
 								{localeText('saveChanges')}
+								{!newAddress && <Tooltip text={localeText('selectDeliveryAddress')} ref={saveRef} />}
 							</button>
 						</form>
 					</>

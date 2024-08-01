@@ -18,3 +18,18 @@ export const getDistance: (destination: string) => Promise<DistanceResult | Dist
 		throw new Error('Failed to fetch data')
 	}
 }
+
+export const getCoordinates: (address: string) => Promise<{ lat: number; lng: number }> = async address => {
+	try {
+		const encodedAddress = encodeURIComponent(address)
+		const response = await fetch(
+			`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${process.env.GOOGLE_MAPS_API_KEY}`
+		)
+		const data = await response.json()
+
+		const { lat, lng } = data.results[0].geometry.location
+		return { lat, lng }
+	} catch (e) {
+		console.error('Error fetching coordinates:')
+	}
+}

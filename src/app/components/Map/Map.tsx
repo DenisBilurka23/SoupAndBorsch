@@ -47,14 +47,13 @@ const MapComponent: React.FC<MapComponentProps> = ({ destination, setDestination
 					content: pinBackground.element
 				})
 				const geocoder = new Geocoder()
-
 				const updateAddress = async (lat: number, lng: number) => {
 					const { results } = await geocoder.geocode({ location: { lat, lng } })
 					if (results[0]) {
 						const formattedAddress = results[0].formatted_address
 						autocompleteRef.current!.value = formattedAddress
 						if (setAddress) {
-							setAddress(formattedAddress as string)
+							setAddress(formattedAddress)
 						}
 					}
 				}
@@ -109,7 +108,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ destination, setDestination
 				className="w-full box-border border border-transparent h-8 px-3 rounded-md shadow-md outline-none text-ellipsis"
 				disabled={!isLoaded}
 			/>
-			<div ref={mapRef} style={{ width: '100%', height: '400px' }} />
+			<div ref={mapRef as any} style={{ width: '100%', height: '400px' }} />
 		</div>
 	)
 }

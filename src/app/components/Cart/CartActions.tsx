@@ -1,6 +1,7 @@
-import { type FC, useMemo, useState } from 'react'
+import React, { type FC, useMemo, useRef } from 'react'
 import { type CartProductItem } from '../../../../types'
 import { useRouter } from 'next/navigation'
+import Tooltip from '@/app/components/Cart/Tooltip'
 
 const CartActions: FC<{
 	cart: CartProductItem[]
@@ -13,11 +14,7 @@ const CartActions: FC<{
 	const router = useRouter()
 	const itemTotal = useMemo(() => cart.reduce((acc, product) => acc + product.price * product.quantity, 0), [cart])
 	const subtotal = useMemo(() => itemTotal + parseFloat(shipping as string), [itemTotal, shipping])
-	const [showTooltip, setShowTooltip] = useState(false)
-
-	const handleToggleTooltip = (show: boolean) => () => {
-		setShowTooltip(show && (cart?.length === 0 || (shippingPage && !shipping)))
-	}
+	const checkoutRef = useRef<HTMLDivElement | null>(null)
 
 	const handleCheckout = (): void => router.push('https://serverless-payment.netlify.app/')
 
@@ -42,8 +39,9 @@ const CartActions: FC<{
 				</>
 			)}
 			<div className="mt-6">
-				<div className="mt-6" onMouseEnter={handleToggleTooltip(true)} onMouseLeave={handleToggleTooltip(false)}>
+				<div className="mt-6">
 					<button
+						ref={checkoutRef as any}
 						disabled={cart?.length === 0 || (shippingPage && !shipping)}
 						className={`relative flex items-center w-full justify-center rounded-md border border-transparent hover:from-orange-500 hover:to-orange-700 px-6 py-3 text-base font-medium text-white shadow-sm ${
 							cart?.length === 0 || (shippingPage && !shipping)
@@ -53,10 +51,8 @@ const CartActions: FC<{
 						onClick={shippingPage ? handleCheckout : handleShippingPage(true)}
 					>
 						{shippingPage ? localeText('placeOrder') : localeText('proceedToShipping')}
-						{showTooltip && (
-							<span className="absolute -bottom-full bg-black text-white text-xs px-2 py-1 rounded mt-1 opacity-100 pointer-events-auto transition-opacity duration-300">
-								{localeText(cart?.length === 0 ? 'tooltipItems' : 'tooltipAddress')}
-							</span>
+						{(cart?.length === 0 || (shippingPage && !shipping)) && (
+							<Tooltip ref={checkoutRef} text={localeText(cart?.length === 0 ? 'tooltipItems' : 'tooltipAddress')} />
 						)}
 					</button>
 				</div>

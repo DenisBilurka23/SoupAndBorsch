@@ -87,7 +87,8 @@
     "qty": "Qty",
     "type": "Portion",
     "whole": "Whole",
-    "slice": "Slice"
+    "slice": "Slice",
+    "selectDeliveryAddress": "Select a delivery address"
   },
   "product": {
     "ingredients": "Ingredients",

@@ -87,7 +87,8 @@
     "qty": "Шт",
     "type": "Порция",
     "whole": "Целый",
-    "slice": "Кусок"
+    "slice": "Кусок",
+    "selectDeliveryAddress": "Веберите адрес доставки"
   },
   "product": {
     "ingredients": "Ингредиенты",
