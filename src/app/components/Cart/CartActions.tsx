@@ -10,10 +10,15 @@ const CartActions: FC<{
 	shippingPage: boolean
 	setShippingPage: (val: boolean) => void
 	localeText: (property: string) => string
-}> = ({ cart, onClose, shipping, shippingPage, setShippingPage, localeText }) => {
+	paymentOption: string
+	deliveryOption: string
+}> = ({ cart, onClose, shipping, shippingPage, setShippingPage, localeText, paymentOption, deliveryOption }) => {
 	const router = useRouter()
 	const itemTotal = useMemo(() => cart.reduce((acc, product) => acc + product.price * product.quantity, 0), [cart])
-	const subtotal = useMemo(() => itemTotal + parseFloat(shipping as string), [itemTotal, shipping])
+	const subtotal = useMemo(
+		() => (deliveryOption === 'selfPickup' ? itemTotal : itemTotal + parseFloat(shipping as string)),
+		[itemTotal, shipping, deliveryOption]
+	)
 	const checkoutRef = useRef<HTMLDivElement | null>(null)
 
 	const handleCheckout = (): void => router.push('https://serverless-payment.netlify.app/')
@@ -26,7 +31,7 @@ const CartActions: FC<{
 				<p>{localeText('orderTotal')}</p>
 				<p>${itemTotal.toFixed(2)}</p>
 			</div>
-			{shippingPage && (
+			{shippingPage && deliveryOption !== 'selfPickup' && (
 				<>
 					<div className="flex justify-between text-base text-gray-900 mt-2">
 						<p>{localeText('shipping')}</p>

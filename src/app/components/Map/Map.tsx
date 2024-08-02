@@ -79,7 +79,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ destination, setDestination
 					}
 				})
 
-				autocomplete.addListener('place_changed', () => {
+				autocomplete.addListener('place_changed', async () => {
 					const place = autocomplete.getPlace()
 					if (place.geometry?.location) {
 						const lat: number = place.geometry.location.lat()
@@ -87,6 +87,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ destination, setDestination
 						setDestination(lat, lng)
 						map.setCenter(place.geometry.location)
 						marker.position = place.geometry.location
+						await updateAddress(lat, lng)
 					}
 				})
 

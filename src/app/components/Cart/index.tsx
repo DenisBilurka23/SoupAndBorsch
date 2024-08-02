@@ -11,12 +11,17 @@ import { type cartItems } from '../../../../types'
 import { useStateValue } from '@/app/context/StateProvider'
 import ShippingInfo from './ShippingInfo'
 import { useLocale, useTranslations } from 'use-intl'
+import OrderOptions from '@/app/components/Cart/OrderOptions'
 
 const Cart = () => {
 	const locale = useLocale() as 'ru' | 'en'
 	const [{ showCart, cart }, dispatch] = useStateValue()
 	const [shippingPage, setShippingPage] = useState(false)
 	const [shipping, setShipping] = useState<string | number>(0)
+	const paymentOptions = ['cash', 'card']
+	const deliveryOptions = ['byAddress', 'selfPickup']
+	const [selectedPaymentOption, setSelectedPaymentOption] = useState<string>(paymentOptions[0])
+	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState<string>(deliveryOptions[0])
 	const localeText = useTranslations('cart')
 
 	const handleRemoveProduct: (id: string) => () => void = id => () => {
@@ -43,7 +48,25 @@ const Cart = () => {
 		<Drawer show={showCart} onClose={handleCloseCart}>
 			<div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
 				{shippingPage ? (
-					<ShippingInfo localeText={localeText} setShipping={setShipping} />
+					<>
+						<ShippingInfo
+							selfPickup={selectedDeliveryOption === deliveryOptions[1]}
+							localeText={localeText}
+							setShipping={setShipping}
+						/>
+						<OrderOptions
+							title="paymentOptions"
+							options={deliveryOptions}
+							option={selectedDeliveryOption}
+							setOption={setSelectedDeliveryOption}
+						/>
+						<OrderOptions
+							title="selectPaymentOption"
+							options={paymentOptions}
+							option={selectedPaymentOption}
+							setOption={setSelectedPaymentOption}
+						/>
+					</>
 				) : (
 					<div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 relative">
 						<div className="flex items-start justify-between">
@@ -85,6 +108,8 @@ const Cart = () => {
 					shipping={shipping}
 					cart={cart}
 					shippingPage={shippingPage}
+					paymentOption={selectedPaymentOption}
+					deliveryOption={selectedDeliveryOption}
 					setShippingPage={setShippingPage}
 					onClose={handleCloseCart}
 				/>

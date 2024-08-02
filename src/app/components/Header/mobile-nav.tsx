@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { toggleCart } from '@/app/context/actionCreators'
 import { routes } from '@/app/utils/routes'
+import LanguageSwitcher from '@/app/components/LanguageSelector'
 
 const MobileNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) => {
 	const [{ showCart, cartItems }, dispatch] = useStateValue()
@@ -57,6 +58,9 @@ const MobileNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) =
 						{title}
 					</Link>
 				))}
+				<div className="relative">
+					<LanguageSwitcher row />
+				</div>
 			</div>
 
 			<Link href={'/'} onClick={() => setIsOpen(!isOpen)} className="flex items-center  justify-center w-full">
