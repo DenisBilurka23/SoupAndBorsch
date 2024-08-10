@@ -18,9 +18,10 @@ interface ShippingInfoProps {
 	setShipping: (shippingCost: string) => void
 	localeText: (property: string) => string
 	selfPickup: boolean
+	setCustomerInfo: any
 }
 
-const ShippingInfo: React.FC<ShippingInfoProps> = ({ setShipping, localeText, selfPickup }) => {
+const ShippingInfo: React.FC<ShippingInfoProps> = ({ setShipping, localeText, selfPickup, setCustomerInfo }) => {
 	const saveRef = useRef<HTMLDivElement | null>(null)
 	const [{ user }] = useStateValue()
 	const [isEdited, setIsEdited] = useState(false)
@@ -71,8 +72,11 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ setShipping, localeText, se
 	const onSubmit: SubmitHandler<ShippingDetails> = async data => {
 		if (newAddress) {
 			await countPrice(destination.lat, destination.lng)
-			setAddress(newAddress)
+			setCustomerInfo(prev => ({ ...prev, ...data, streetAddress: newAddress }))
+			setIsEdited(false)
+			return setAddress(newAddress)
 		}
+		setCustomerInfo(prev => ({ ...prev, ...data }))
 		setIsEdited(false)
 	}
 

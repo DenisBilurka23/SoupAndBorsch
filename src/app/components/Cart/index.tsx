@@ -6,22 +6,27 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import CartItem from '@/app/components/Cart/CartItem'
 import CartActions from '@/app/components/Cart/CartActions'
 import { setCart, toggleCart } from '@/app/context/actionCreators'
-import { useEffect, useState } from 'react'
-import { type cartItems } from '../../../../types'
+import React, { useEffect, useState } from 'react'
+import { type cartItems, type User } from '../../../../types'
 import { useStateValue } from '@/app/context/StateProvider'
 import ShippingInfo from './ShippingInfo'
 import { useLocale, useTranslations } from 'use-intl'
 import OrderOptions from '@/app/components/Cart/OrderOptions'
+import Loader from '../Loader'
+import Alert from '../Alert'
 
 const Cart = () => {
 	const locale = useLocale() as 'ru' | 'en'
-	const [{ showCart, cart }, dispatch] = useStateValue()
+	const [{ showCart, cart, user }, dispatch] = useStateValue()
 	const [shippingPage, setShippingPage] = useState(false)
 	const [shipping, setShipping] = useState<string | number>(0)
+	const [loading, setLoading] = useState(false)
+	const [successAlert, setSuccessAlert] = useState<boolean>(false)
 	const paymentOptions = ['cash', 'card']
 	const deliveryOptions = ['byAddress', 'selfPickup']
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState<string>(paymentOptions[0])
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState<string>(deliveryOptions[0])
+	const [customerInfo, setCustomerInfo] = useState({})
 	const localeText = useTranslations('cart')
 
 	const handleRemoveProduct: (id: string) => () => void = id => () => {
@@ -44,6 +49,12 @@ const Cart = () => {
 		}
 	}, [dispatch])
 
+	useEffect(() => {
+		if (user) {
+			setCustomerInfo(user)
+		}
+	}, [user])
+
 	return (
 		<Drawer show={showCart} onClose={handleCloseCart}>
 			<div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
@@ -53,6 +64,7 @@ const Cart = () => {
 							selfPickup={selectedDeliveryOption === deliveryOptions[1]}
 							localeText={localeText}
 							setShipping={setShipping}
+							setCustomerInfo={setCustomerInfo}
 						/>
 						<OrderOptions
 							title="paymentOptions"
@@ -106,14 +118,23 @@ const Cart = () => {
 				<CartActions
 					localeText={localeText}
 					shipping={shipping}
-					cart={cart}
 					shippingPage={shippingPage}
 					paymentOption={selectedPaymentOption}
 					deliveryOption={selectedDeliveryOption}
 					setShippingPage={setShippingPage}
 					onClose={handleCloseCart}
+					customerInfo={customerInfo as User}
+					setLoading={setLoading}
+					setSuccessAlert={setSuccessAlert}
+					loading={loading}
 				/>
 			</div>
+			{loading && <Loader />}
+			<Alert
+				description="Your order has been successfully submitted!"
+				setIsVisible={setSuccessAlert}
+				isVisible={successAlert}
+			/>
 		</Drawer>
 	)
 }
