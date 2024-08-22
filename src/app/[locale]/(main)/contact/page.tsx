@@ -1,4 +1,4 @@
-import BannerImg from '../../../../../public/img/contact_banner.jpg'
+import BannerImg from '../../../../../public/img/contact_banner.jpeg'
 import Banner from '@/app/components/Banner'
 import { features } from '@/app/utils/contacts'
 import Map from '@/app/components/Map/IframeMap'

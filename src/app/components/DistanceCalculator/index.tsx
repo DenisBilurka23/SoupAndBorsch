@@ -30,6 +30,11 @@ const DistanceCalculator = () => {
 	return (
 		<div className="w-full max-w-4xl mx-auto p-4">
 			<div className="bg-white p-4 rounded-lg shadow mb-4">
+				<p className="mb-2">
+					Orders are fulfilled by pre-order at least 24 hours in advance Orders are fulfilled by pre-order at least 24
+					hours in advance. The minimum order amount is $50. . For orders over $100, delivery is free. We deliver to the
+					areas of Toronto, North York, York, East York, Scarborough, Etobicoke, Vaughan, Richmond Hill, and Markham.
+				</p>
 				<p className="mb-2">{localeText('selfPickup')}</p>
 				<p className="font-semibold">55 Smooth Rose Court, Toronto, ON</p>
 				<p className="mt-2">{localeText('toBeDelivered')}</p>

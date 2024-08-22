@@ -124,8 +124,8 @@ const Form = () => {
 				</a>
 			</p>
 			<p className="text-sm cursor-pointer text-gray-500 dark:text-gray-400">
-				<a href="tel:+1111111111" className="hover:underline">
-					+111-111-11-11
+				<a href="tel:+16473273995" className="hover:underline">
+					+1(647)-327-3995
 				</a>
 			</p>
 			{loading && <Loader />}

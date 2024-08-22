@@ -9,9 +9,11 @@ import Image from 'next/image'
 import { toggleCart } from '@/app/context/actionCreators'
 import { routes } from '@/app/utils/routes'
 import LanguageSwitcher from '@/app/components/LanguageSelector'
+import { useTranslations } from 'use-intl'
 
 const MobileNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) => {
 	const [{ showCart, cartItems }, dispatch] = useStateValue()
+	const text = useTranslations('header')
 
 	const handleToggleCart = (): void => {
 		dispatch(toggleCart(!showCart))
@@ -55,7 +57,7 @@ const MobileNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) =
 						href={link}
 						className="text-base text-textColor cursor-pointer hover:text-headingColor duration-100 transition-all ease-in-out px-10"
 					>
-						{title}
+						{text(title)}
 					</Link>
 				))}
 				<div className="relative">
@@ -69,8 +71,8 @@ const MobileNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: any }) =
 					whileHover={{ scale: 1.1 }}
 					className="flex items-center gap-2 cursor-pointer"
 				>
-					<Image src={Logo} alt="Toronto Sizzle" className="w-16 object-cover" />
-					<p className="text-headingColor text-3xl font-bold">TorontoSizzle</p>
+					<Image src={Logo} alt="Soup & Borscht" className="w-16 object-cover" />
+					<p className="text-headingColor text-3xl font-bold">Soup & Borscht</p>
 				</motion.div>
 			</Link>
 		</div>

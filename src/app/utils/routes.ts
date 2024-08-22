@@ -1,18 +1,18 @@
 export const routes = [
 	{
-		title: 'Home',
+		title: 'home',
 		link: '/'
 	},
 	{
-		title: 'Delivery',
+		title: 'delivery',
 		link: '/delivery'
 	},
 	{
-		title: 'Menu',
+		title: 'menu',
 		link: '/menu'
 	},
 	{
-		title: 'Contacts',
+		title: 'contacts',
 		link: '/contact'
 	}
 ]

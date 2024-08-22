@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import MenuSection from '@/app/components/Sections/Menu'
 import Banner from '@/app/components/Banner'
-import MenuBanner from '../../../../../public/img/menu-banner.jpg'
+import MenuBanner from '../../../../../public/img/menu-banner.png'
 import { useTranslations } from 'next-intl'
 
 interface Props {

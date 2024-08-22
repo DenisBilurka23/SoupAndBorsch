@@ -15,7 +15,7 @@ const AboutUs = ({ text }) => (
 						className="rounded-lg h-96 object-cover object-center"
 					/>
 				</div>
-				<div className="rounded-lg absolute -left-0 top-72">
+				<div className="rounded-lg absolute -left-0 top-[21rem]">
 					<Image
 						height={500}
 						width={500}

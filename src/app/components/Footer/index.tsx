@@ -19,10 +19,7 @@ const Footer = () => {
 				<div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 lg:max-w-none lg:grid-cols-2">
 					<div className="max-w-xl lg:max-w-lg">
 						<Image src={LogoImg} alt="Logo" width={150} height={150} />
-						<p className="mt-0 text-sm leading-8 text-gray-800">
-							Toronto-based restaurant established in 2001, which seamlessly blends traditional flavors with modern
-							flair to your doorsteps.
-						</p>
+						<p className="mt-0 text-sm leading-8 text-gray-800">{localeTextFooter('description')}</p>
 					</div>
 					<dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 pt-8">
 						<div className="flex flex-col items-start">
@@ -51,7 +48,7 @@ const Footer = () => {
 									href={`/${currentLocale}/contact`}
 									className="text-orange-800 h-10 w-10 rounded-full flex items-center"
 								>
-									{localeTextNav('contact')}
+									{localeTextNav('contacts')}
 								</MotionLink>
 							</dd>
 							<dd className="mt-0 leading-7 text-gray-400">
@@ -97,17 +94,15 @@ const Footer = () => {
 
 			<div className="flex flex-col items-center justify-center md:flex-row md:justify-between mx-10">
 				<span className="text-sm text-orange-700 text-center dark:text-gray-400">
-					© {new Date().getFullYear()} TorontoSizzle. All Rights Reserved.
+					© {new Date().getFullYear()} Soup & Borscht. All Rights Reserved.
 				</span>
 			</div>
-
 			<div className="flex left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
 				<div className="flex flex-col items-center justify-center md:flex-row md:justify-between mx-10">
-					<span className="text-sm text-gray-400 text-center dark:text-gray-400">(647)123-4567</span>
+					<span className="text-sm text-gray-400 text-center dark:text-gray-400">(647)327-3995</span>
 				</div>
-
 				<div className="flex flex-col items-center justify-center md:flex-row md:justify-between mx-10">
-					<span className="text-sm text-gray-400 text-center dark:text-gray-400">info@torontosizzle.ca</span>
+					<span className="text-sm text-gray-400 text-center dark:text-gray-400">soupandborscht@gmail.com</span>
 				</div>
 			</div>
 		</div>

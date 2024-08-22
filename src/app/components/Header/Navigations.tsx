@@ -57,7 +57,7 @@ const Navigations: FC<PropTypes> = ({ direction }) => {
 					whileHover={{ scale: 1.1 }}
 					className="md:text-sm lg:text-md text-base text-textColor cursor-pointer hover:text-headingColor duration-100 transition-all ease-in-out"
 				>
-					<Link href={`/${currentLocale}/contact`}>{localeText('contact')}</Link>
+					<Link href={`/${currentLocale}/contact`}>{localeText('contacts')}</Link>
 				</motion.li>
 				<motion.li
 					onClick={handleOpenCart}

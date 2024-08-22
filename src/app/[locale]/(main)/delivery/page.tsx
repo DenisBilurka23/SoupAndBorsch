@@ -1,5 +1,5 @@
 import Banner from '@/app/components/Banner'
-import BannerImg from '../../../../../public/img/delivery.jpg'
+import BannerImg from '../../../../../public/img/delivery.png'
 import Title from '@/app/components/Title'
 import DistanceCalculator from '@/app/components/DistanceCalculator'
 import { useTranslations } from 'next-intl'

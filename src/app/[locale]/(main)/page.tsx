@@ -1,7 +1,7 @@
 import MenuSection from '@/app/components/Sections/Menu'
 import { type FC } from 'react'
 import Banner from '@/app/components/Banner'
-import MainBanner from '../../../../public/img/banner-main.jpg'
+import MainBanner from '../../../../public/img/banner-main.png'
 import AboutUs from '@/app/components/AboutUs'
 import FooterContacts from '@/app/components/FooterContacts'
 import { useTranslations } from 'next-intl'

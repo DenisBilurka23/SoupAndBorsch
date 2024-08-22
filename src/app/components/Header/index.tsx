@@ -97,7 +97,7 @@ const Header = () => {
 						<Link href={'/'}>
 							<motion.div whileHover={{ scale: 1.1 }} className="flex items-center gap-2 cursor-pointer">
 								<Image src={LogoImg} alt="Logo" className="w-8 object-cover" />
-								<p className="text-headingColor text-xl font-bold">TorontoSizzle</p>
+								<p className="text-headingColor text-xl font-bold">Soup & Borscht</p>
 							</motion.div>
 						</Link>
 						{user ? (

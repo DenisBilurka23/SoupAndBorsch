@@ -13,7 +13,7 @@
     "home": "Home",
     "menu": "Menu",
     "delivery": "Delivery",
-    "contact": "Contact",
+    "contacts": "Contacts",
     "login": "Login"
   },
   "dropdown": {
@@ -38,7 +38,8 @@
   },
   "footer": {
     "quickLinks": "Quick Links",
-    "socialMedia": "Social Media"
+    "socialMedia": "Social Media",
+    "description": "Welcome to Soup & Borscht! We bring you the finest Eastern European cuisine, crafted with traditional recipes and fresh, quality ingredients. Immerse yourself in authentic Eastern European flavors and enjoy our warm, welcoming atmosphere"
   },
   "contact": {
     "description": {
